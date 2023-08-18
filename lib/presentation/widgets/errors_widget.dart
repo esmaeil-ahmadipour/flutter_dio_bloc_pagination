@@ -12,33 +12,31 @@ class ErrorsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       decoration: BoxDecoration(
           color: Colors.red, borderRadius: BorderRadius.circular(5.0)),
-      child: Row(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          const SizedBox(width: 8.0),
-          Expanded(
+          Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Text(
-              message,
+              message,maxLines:10 ,
               style: styleSize18OnPrimary,
               textAlign: TextAlign.start,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: MaterialButton(
-              splashColor: colorErrorPrimary,
-              color: colorErrorSecondary,
-              child: const Text(
-                stringRetry,
-                style: styleSize14OnSecondary,
-              ),
-              onPressed: () {},
+          MaterialButton(
+            splashColor: colorErrorPrimary,
+            color: colorErrorSecondary,
+            child: const Text(
+              stringRetry,
+              style: styleSize14OnSecondary,
             ),
+            onPressed: () {},
           ),
         ],
       ),

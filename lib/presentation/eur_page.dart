@@ -52,11 +52,9 @@ class _EurPageState extends State<EurPage> {
                 onNotification: (notification) {
                   if (notification is ScrollEndNotification &&
                       _scrollController.position.extentAfter == 0) {
-                    if (coins.length + 1 <= coinEurBloc.boundaryItem) {
-                      coinEurBloc.add(
-                        CoinEurEvent.loadMoreCoins(coins: coins),
-                      );
-                    }
+                    coinEurBloc.add(
+                      CoinEurEvent.loadMoreCoins(coins: coins),
+                    );
                   }
                   return false;
                 },
@@ -98,8 +96,7 @@ class _EurPageState extends State<EurPage> {
                                   style: styleSize18OnPrimary,
                                 ),
                               ),
-                              if (index == coins.length - 1 &&
-                                  (index + 1 <= coinEurBloc.boundaryItem))
+                              if (index == coins.length - 1)
                                 StreamBuilder(
                                     stream: coinEurBloc.dataStateStream,
                                     builder: (context, data) {

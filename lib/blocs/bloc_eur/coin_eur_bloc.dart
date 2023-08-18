@@ -60,16 +60,14 @@ class CoinEurBloc extends Bloc<CoinEurEvent, CoinEurState> {
             }
           },
           loadMoreCoins: (coins) async {
-            final nextPage = coins.length ~/ limit + 1;
-
             try {
-              final newCoins = await getTopCoinsRepository.getTopCoins(
-                  limit, tsym, nextPage);
-
-              coinEur.addAll(newCoins);
               if (coinEur.length > boundaryItem) {
                 throw Exception("Over $boundaryItem");
               }
+              final nextPage = coins.length ~/ limit + 1;
+              final newCoins = await getTopCoinsRepository.getTopCoins(
+                  limit, tsym, nextPage);
+              coinEur.addAll(newCoins);
               emit(CoinEurState.loaded(List.from(coinEur)));
             } catch (e) {
               _dataState.add(const DataState.error(

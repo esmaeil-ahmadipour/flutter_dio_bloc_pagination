@@ -52,11 +52,9 @@ class _UsdPageState extends State<UsdPage> {
                 onNotification: (notification) {
                   if (notification is ScrollEndNotification &&
                       _scrollController.position.extentAfter == 0) {
-                    if (coins.length + 1 <= coinUsdBloc.boundaryItem) {
-                      coinUsdBloc.add(
-                        CoinEvent.loadMoreCoins(coins: coins),
-                      );
-                    }
+                    coinUsdBloc.add(
+                      CoinEvent.loadMoreCoins(coins: coins),
+                    );
                   }
                   return false;
                 },
@@ -64,6 +62,8 @@ class _UsdPageState extends State<UsdPage> {
                   controller: _scrollController,
                   itemCount: coins.length,
                   itemBuilder: (BuildContext context, int index) {
+                    print(
+                        "index + 1 <= coinUsdBloc.boundaryItem:${index + 1 <= coinUsdBloc.boundaryItem}");
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -98,8 +98,7 @@ class _UsdPageState extends State<UsdPage> {
                                   style: styleSize18OnPrimary,
                                 ),
                               ),
-                              if (index == coins.length - 1 &&
-                                  (index + 1 <= coinUsdBloc.boundaryItem))
+                              if (index == coins.length - 1)
                                 StreamBuilder(
                                     stream: coinUsdBloc.dataStateStream,
                                     builder: (context, data) {
