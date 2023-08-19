@@ -1,19 +1,6 @@
 # flutter_dio_bloc_pagination
 
-[VIDEO DEMO :](https://ea2.ir/uploads/mobizen_20200721_023421_504x896.mp4)
+A sample for pagination in flutter application.
 
+<img src="https://raw.githubusercontent.com/esmaeil-ahmadipour/esmaeil-ahmadipour/main/upload/repositories/flutter_dio_bloc_pagination/GIF%208-19-2023%202-19-21%20PM.gif"/>
 
-A new Flutter application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
