@@ -34,15 +34,14 @@ class CoinEurBloc extends Bloc<CoinEurEvent, CoinEurState> {
     on<CoinEurEvent>(
       (event, emit) async {
         await event.when(
-            appStarted: () => onAppStarted(emit),
-            refreshCoins: () => onRefreshCoins(emit),
-            loadMoreCoins: (coins) => onLoadMoreCoins(coins, emit));
+            appStarted: () => _onAppStarted(emit),
+            refreshCoins: () => _onRefreshCoins(emit),
+            loadMoreCoins: (coins) => _onLoadMoreCoins(coins, emit));
       },
     );
   }
 
-  @visibleForTesting
-  Future<void> onAppStarted(Emitter<CoinEurState> emit) async {
+  Future<void> _onAppStarted(Emitter<CoinEurState> emit) async {
     _dataState.add(const DataState.loading());
     try {
       final coins = await getTopCoinsRepository.getTopCoins(limit, tsym, 1);
@@ -56,8 +55,7 @@ class CoinEurBloc extends Bloc<CoinEurEvent, CoinEurState> {
     }
   }
 
-  @visibleForTesting
-  Future<void> onRefreshCoins(Emitter<CoinEurState> emit) async {
+  Future<void> _onRefreshCoins(Emitter<CoinEurState> emit) async {
     emit(const CoinEurState.initial());
     coinEur.clear();
     _dataState.add(const DataState.loading());
@@ -71,8 +69,7 @@ class CoinEurBloc extends Bloc<CoinEurEvent, CoinEurState> {
     }
   }
 
-  @visibleForTesting
-  Future<void> onLoadMoreCoins(
+  Future<void> _onLoadMoreCoins(
       List<CoinEur> coins, Emitter<CoinEurState> emit) async {
     try {
       if (coinEur.length > boundaryItem) {
